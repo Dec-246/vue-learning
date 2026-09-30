@@ -1,7 +1,10 @@
-# VUE Learning
+# VUE
+
 
 ## Getting Started/ basics
-- Using a plain <header> tag with text inside will be useless as view won’t acknowledge it if it is outside of the ‘app’ id <div id=“app”></div>
+
+- Using a plain <header> tag with text inside will be useless as view won’t acknowledge it if it is outside of the ‘app’ id
+<div id=“app”></div>
 - We use {{ greeting }} (as an example) to echo out data associated with the greeting property.
 - We set objects inside methods inside a script tag to associate the data to the property being echoed out.
 - Can use ‘npx serve’ to create node server to view Vue UI in browser.
@@ -10,6 +13,7 @@
 - setTimeout(() => {}, ); can be used to update the message after a given time1
 
 ## Vue Components
+
 - Can use v-show/ v-if to conditionally render/ displays elements 
     - V-if will destroy and recreate the element on demand.
     - V-show will always have the element loaded but just hide/ show it when required. This can be seen clearer using inspect element
@@ -26,3 +30,8 @@
 
 ## Event Handling
 
+- During form submission, the data on screen will refresh automatically. We can turn this off by using @submit.prevent
+- We can set responsive alerts that populate with the form data after submission 
+- Without setting the variable for the form fields to an empty string, the form data will remain populated. This empty value means that the form field resets to being blank after form submission (newAssignment: ‘’,).
+- Parent communicates to child through props. The child communicates to parent through emitting events.
+- Using @add="add" means that the parent component listens for fired events when form submitted, calls its own ‘add’ method which then sends the submitted data to the array list (assignments list from tutorial)
