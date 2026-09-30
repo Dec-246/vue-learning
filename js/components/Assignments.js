@@ -1,7 +1,8 @@
 import AssignmentList from "./AssignmentList.js"; //parent of AssignmentList (creates two instances: "In Progress" and "Completed")
+import AssignmentCreate from "./AssignmentCreate.js"; //parent of AssignmentCreate (creates a form to add new assignments)
 
 export default {
-    components: { AssignmentList },
+    components: { AssignmentList, AssignmentCreate },
 
     // Ep 8: Handle a form submission
     template: `
@@ -9,20 +10,12 @@ export default {
             <assignment-list :assignments="filters.inProgress" title="In Progress"></assignment-list>
             <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
 
-            <form @submit.prevent="add">
-                <div class="border border-gray-600 text-black">
-                    <input v-model="newAssignment" placeholder="New Assignment ..." class="p-2" />
-                    <button type="submit" class="bg-white p-2 border-l">Add</button>
-                </div>
-            </form>
+            <assignment-create @add="add"></assignment-create>
         </section>
     `,
 
     data() {
         return {
-            // Ep 8: Handle a form submission
-            newAssignment: '',
-
             assignments: [
                 { name: 'Finish project', complete: false, id: 1 },
                 { name: 'Read Chapter 4', complete: false, id: 2 },
@@ -44,14 +37,12 @@ export default {
     methods: {
 
         // Ep 8: Handle a form submission
-        add() {
+        add(name) {
             this.assignments.push({
-                name: this.newAssignment,
+                name: name,
                 complete: false,
-                id: this.assignments.length + 1
+                id: this.assignments.length + 1 // adding new assignment to end of array, using length of array to generate new id
             });
-
-            this.newAssignment = '';
         }
     }
 }
