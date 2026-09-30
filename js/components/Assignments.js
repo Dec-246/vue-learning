@@ -3,12 +3,12 @@ import AssignmentList from "./AssignmentList.js"; //parent of AssignmentList (cr
 export default {
     components: { AssignmentList },
 
+    // Ep 8: Handle a form submission
     template: `
         <section class="space-y-6">
             <assignment-list :assignments="filters.inProgress" title="In Progress"></assignment-list>
             <assignment-list :assignments="filters.completed" title="Completed"></assignment-list>
 
-            // Ep 8: Handle a form submission
             <form @submit.prevent="add">
                 <div class="border border-gray-600 text-black">
                     <input v-model="newAssignment" placeholder="New Assignment ..." class="p-2" />
