@@ -35,3 +35,8 @@
 - Without setting the variable for the form fields to an empty string, the form data will remain populated. This empty value means that the form field resets to being blank after form submission (newAssignment: ‘’,).
 - Parent communicates to child through props. The child communicates to parent through emitting events.
 - Using @add="add" means that the parent component listens for fired events when form submitted, calls its own ‘add’ method which then sends the submitted data to the array list (assignments list from tutorial)
+
+## Beyond the Basics
+
+- Can echo out length of array lists in a span tag to display dynamic view of number of items in that array. <h2><span>({{ assignments.length }})</span></h2>
+- Set is used to create a set of items where each item must be unique. This helps us in this tutorial to create a unique set of tags for categories of assignments.
