@@ -7,7 +7,7 @@ export default {
         <section v-show="assignments.length">
             <h2 class="font-bold mb-2">{{ title }}</h2>
 
-            <ul>
+            <ul class="border border-gray-600 divide-y divide-gray-600">
                <assignment 
 
                 // loops through the assignments array, and for each item passes it to Assignment.js via its 'assignment' prop
