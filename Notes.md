@@ -38,5 +38,5 @@
 
 ## Beyond the Basics
 
-- Can echo out length of array lists in a span tag to display dynamic view of number of items in that array. **<h2><span>({{ assignments.length }})</span></h2>**
+- Can echo out length of array lists in a span tag to display dynamic view of number of items in that array **<h2><span>({{ assignments.length }})</span></h2>**
 - Set is used to create a set of items where each item must be unique. This helps us in this tutorial to create a unique set of tags for categories of assignments.
