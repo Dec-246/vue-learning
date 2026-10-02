@@ -1,7 +1,8 @@
 import Assignment from "./Assignment.js"; //parent of Assignment (one instance per item, via the for loop)
+import AssignmentTags from "./AssignmentTags.js";
 
 export default {
-    components: { Assignment },
+    components: { Assignment, AssignmentTags},
 
     template: `
         <section v-show="assignments.length">
@@ -9,18 +10,14 @@ export default {
             <span>({{ assignments.length }})</span>
             </h2>
 
-            <div class="flex gap-2">
-                <button
-                    @click="currentTag = tag"
-                    v-for="tag in tags" 
-                    class="border rounded px-1 py-px text-xs"
-
-                    // dynamic class binding to highlight the current tag
-                    :class="{
-                    'border-blue-500 text-blue-500': currentTag === tag
-                    }"
-                    >{{ tag }}</button>
-            </div>
+            <!--magic $event variable, contains second argument (tag) from $emit-->
+        <!--after user clicks on the tag, it emits a change with the tag selected, in turn, this component waits for that change-->
+        <!--we will the store that tag selected as the current tag-->
+        <assignment-tags 
+            :data-tags="assignments.map(a => a.tag)"
+            :current-tag="currentTag"
+            @change="currentTag = $event">
+        </assignment-tags>
 
             <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">
                <assignment 
@@ -45,6 +42,9 @@ export default {
         };
     },
 
+    // - Rule of thumb: if a value is calculated from other data (not just equal to it), 
+    // use computed instead of a method or storing it separately as data. 
+    // This applies whether that data is hardcoded or entered by the user in UI.
     computed: {
         filteredAssignments() {
             if (this.currentTag === 'all'){
@@ -52,10 +52,6 @@ export default {
             }
 
             return this.assignments.filter(a => a.tag === this.currentTag);
-        },
-
-        tags() {
-            return ['all', ...new Set(this.assignments.map(a => a.tag))];
         }
     }
 }

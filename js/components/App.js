@@ -6,4 +6,10 @@ export default {
     template: `
         <assignments></assignments>    
     `,
+
+    mounted() {
+        setTimeout(() => {
+            document.title = 'Episode 11: Component Responsibility';
+        }, 1000)
+    },
 }
