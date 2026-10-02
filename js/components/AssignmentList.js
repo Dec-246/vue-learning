@@ -13,10 +13,9 @@ export default {
             <!--magic $event variable, contains second argument (tag) from $emit-->
         <!--after user clicks on the tag, it emits a change with the tag selected, in turn, this component waits for that change-->
         <!--we will the store that tag selected as the current tag-->
-        <assignment-tags 
-            :data-tags="assignments.map(a => a.tag)"
-            :current-tag="currentTag"
-            @change="currentTag = $event">
+        <assignment-tags
+            v-model:currentTag="currentTag"
+            :initial-tags="assignments.map(a => a.tag)"
         </assignment-tags>
 
             <ul class="border border-gray-600 divide-y divide-gray-600 mt-6">

@@ -3,17 +3,18 @@ export default {
       <div class="flex gap-2">
         <!--user clicks on a tag, we then emit a change with that tag that was clicked-->
         <button
-            @click="$emit('change', tag)"
+            @click="$emit('update:currentTag', tag)"
             v-for="tag in tags"
             class="border rounded px-1 py-px text-xs"
             :class="{
-                'border-blue-500 text-blue-500': tag === currentTag 
+                'border-blue-500 text-blue-500': tag === currentTag
               }"
-        >{{ tag }}
-        </button>
-      </div>`,
+        >{{ tag }}</button>
+      </div>
+      `,
+
     props: {
-        dataTags: Array,
+        initialTags: Array,
         currentTag: String
     },
     computed: {
@@ -23,7 +24,7 @@ export default {
             // The outer [ ] creates the array. 
             // 'all' is the first item, 
             // and the spread Set values fill in the rest whilst removing duplicates.
-            return ['all', ...new Set(this.dataTags)];
+            return ['all', ...new Set(this.initialTags)];
         }
     }
 }
